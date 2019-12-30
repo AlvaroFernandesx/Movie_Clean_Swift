@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-Movie_Clean_Swift-Movie_Clean_SwiftUITests/Pods-Movie_Clean_Swift-Movie_Clean_SwiftUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework
+${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework
+${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework
+${BUILT_PRODUCTS_DIR}/Quick/Quick.framework
+${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework
+${BUILT_PRODUCTS_DIR}/KIF/KIF.framework

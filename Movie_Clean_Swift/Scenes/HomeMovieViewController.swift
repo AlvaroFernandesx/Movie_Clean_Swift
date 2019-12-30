@@ -16,18 +16,13 @@ protocol HomeMovieDisplayLogic: class {
   
 }
 
-class HomeMovieViewController: UIViewController, HomeMovieDisplayLogic {
+class HomeMovieViewController: UITableViewController {
     
   var interactor: HomeMovieBusinessLogic?
   var router: (NSObjectProtocol & HomeMovieRoutingLogic & HomeMovieDataPassing)?
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    override func loadView() {
+        super.loadView()
         setup()
     }
     
@@ -43,5 +38,13 @@ class HomeMovieViewController: UIViewController, HomeMovieDisplayLogic {
         router.viewController = viewController
         router.dataStore = interactor
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
+}
+
+extension HomeMovieViewController: HomeMovieDisplayLogic {
+    
 }

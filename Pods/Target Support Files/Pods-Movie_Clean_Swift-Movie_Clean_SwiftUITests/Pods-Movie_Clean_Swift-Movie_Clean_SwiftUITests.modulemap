@@ -1,0 +1,6 @@
+framework module Pods_Movie_Clean_Swift_Movie_Clean_SwiftUITests {
+  umbrella header "Pods-Movie_Clean_Swift-Movie_Clean_SwiftUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
