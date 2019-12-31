@@ -41,9 +41,57 @@ class HomeMovieViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        interactor?.load()
+    }
+    
+    private func setupTableView() {
+        tableView.prefetchDataSource = self
+        tableView.separatorColor = .darkGray
+//        tableView.backgroundColor = .clear
+        tableView.layer.backgroundColor = UIColor.clear.cgColor
+//            tableView.refreshControl = customRefreshControl
+        tableView.register(HomeMovieCell.self, forCellReuseIdentifier: "MovieCell")
+        
+//        let tableHeaderView = RepositoryTableHeaderView()
+//        tableHeaderView.delegate = self
+//        tableView.tableHeaderView = tableHeaderView
     }
 
 }
+
+extension HomeMovieViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10 //interactor?.numberOfRows ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as? HomeMovieCell
+            //let viewModel = interactor?.cellForRow(at: indexPath.row)
+        else {
+            return UITableViewCell()
+        }
+        
+        //cell.configure(viewModel: viewModel)
+       // cell.accessibilityLabel = .repositoryRow
+        
+        return cell
+    }
+    
+}
+
+extension HomeMovieViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+//            interactor?.requestNextPage(index: indexPath.row)
+        }
+    }
+        
+}
+
 
 extension HomeMovieViewController: HomeMovieDisplayLogic {
     

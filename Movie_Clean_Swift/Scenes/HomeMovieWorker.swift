@@ -11,19 +11,19 @@
 //
 
 import UIKit
-//import PromiseKit
+import PromiseKit
 
 class HomeMovieWorker  {
     
-//    let networkProvider: NetworkProvider
-//
-//    init(networkProvider: NetworkProvider = NetworkProvider()) {
-//        self.networkProvider = networkProvider
-//    }
-//
-//    func getData() -> Promise<HomeMovieModels> {
-//        let requestProvider = HomeProvider()
-//        return networkProvider.execute(request: requestProvider, parser: HomeMovieModel.self)
-//    }
+    let networkProvider: NetworkProvider
+
+    init(networkProvider: NetworkProvider = NetworkProvider()) {
+        self.networkProvider = networkProvider
+    }
+
+    func getData(movieApi: MovieApi, page: Int) -> Promise<HomeMovieModels.MovieApiResponse> {
+        let requestProvider = HomeMovieProvider(movieApi: movieApi, page: page)
+        return networkProvider.execute(request: requestProvider, parser: HomeMovieModels.MovieApiResponse.self)
+    }
 
 }

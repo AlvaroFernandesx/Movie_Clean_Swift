@@ -30,7 +30,7 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     }
     
     func load() {
-       // worker.getData().done(handleSuccess).catch(handleFailure)
+        worker?.getData(movieApi: MovieApi.newMovies, page: 1)
     }
 
     
