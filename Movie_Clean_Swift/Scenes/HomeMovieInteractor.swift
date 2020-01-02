@@ -13,24 +13,46 @@
 import UIKit
 
 protocol HomeMovieBusinessLogic {
-  func load()
+    func load()
+    func cellForRow(at index: Int) -> HomeMovieModels.ViewModel?
+    var numberOfRows: Int { get }
 }
 
 protocol HomeMovieDataStore {
-  //var name: String { get set }
+    
 }
 
 class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     
     var presenter: HomeMoviePresentationLogic?
     var worker: HomeMovieWorker?
+    var movies = [HomeMovieModels.Movie]()
     
     init(worker: HomeMovieWorker = HomeMovieWorker()) {
       self.worker = worker
     }
     
     func load() {
-        worker?.getData(movieApi: MovieApi.newMovies, page: 1)
+        worker?.getData(movieApi: MovieApi.newMovies, page: 1).done(handleRequestSuccess).catch(handleRequestFailure)
+    }
+    
+    var numberOfRows: Int {
+       return movies.count
+    }
+    
+    func cellForRow(at index: Int) -> HomeMovieModels.ViewModel? {
+        guard index >= 0 && index < numberOfRows else { return nil }
+        let movie = movies[index]
+        return HomeMovieModels.ViewModel(movie: movie)
+    }
+    
+    private func handleRequestSuccess(_ response: HomeMovieModels.MovieApiResponse) {
+        self.movies.append(contentsOf: response.movies)
+        presenter?.reloadTableView()
+    }
+    
+    private func handleRequestFailure(_ error: Error) {
+//        presenter?.presentError(error)
     }
 
     

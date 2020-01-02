@@ -13,7 +13,7 @@
 import UIKit
 
 protocol HomeMovieDisplayLogic: class {
-  
+  func reloadTableView()
 }
 
 class HomeMovieViewController: UITableViewController {
@@ -47,8 +47,8 @@ class HomeMovieViewController: UITableViewController {
     
     private func setupTableView() {
         tableView.prefetchDataSource = self
-        tableView.separatorColor = .darkGray
-//        tableView.backgroundColor = .clear
+        tableView.separatorColor = .clear
+        tableView.backgroundColor = .clear
         tableView.layer.backgroundColor = UIColor.clear.cgColor
 //            tableView.refreshControl = customRefreshControl
         tableView.register(HomeMovieCell.self, forCellReuseIdentifier: "MovieCell")
@@ -63,20 +63,17 @@ class HomeMovieViewController: UITableViewController {
 extension HomeMovieViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //interactor?.numberOfRows ?? 0
+        return interactor?.numberOfRows ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as? HomeMovieCell
-            //let viewModel = interactor?.cellForRow(at: indexPath.row)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as? HomeMovieCell,
+            let viewModel: HomeMovieModels.ViewModel = interactor?.cellForRow(at: indexPath.row)
         else {
             return UITableViewCell()
         }
-        
-        //cell.configure(viewModel: viewModel)
-       // cell.accessibilityLabel = .repositoryRow
-        
+        cell.configureCell(viewModel: viewModel)
+
         return cell
     }
     
@@ -95,4 +92,7 @@ extension HomeMovieViewController: UITableViewDataSourcePrefetching {
 
 extension HomeMovieViewController: HomeMovieDisplayLogic {
     
+    func reloadTableView() {
+        tableView.reloadData()
+    }
 }

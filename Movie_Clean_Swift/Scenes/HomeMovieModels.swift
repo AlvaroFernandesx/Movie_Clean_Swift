@@ -70,4 +70,24 @@ class HomeMovieModels {
             overview = try movieContainer.decode(String.self, forKey: .overview)
         }
     }
+    
+    struct ViewModel: Decodable {
+        let id: Int
+        let posterPath: String
+        let backdrop: String
+        let title: String
+        let releaseDate: String
+        let rating: Double
+        let overview: String
+        
+        init(movie: Movie) {
+            self.id = movie.id
+            self.posterPath = "https://image.tmdb.org/t/p/w200/\(movie.posterPath)"
+            self.backdrop = "https://image.tmdb.org/t/p/w200/\(movie.backdrop)"
+            self.title = movie.title
+            self.releaseDate = movie.releaseDate
+            self.rating = movie.rating
+            self.overview = movie.overview
+        }
+    }
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2019 Álvaro Fernandes. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Kingfisher
 
 class HomeMovieCell: UITableViewCell {
     
@@ -23,9 +23,8 @@ class HomeMovieCell: UITableViewCell {
     private lazy var movieView: UIView = {
         let view = UIView()
         
-//        view.backgroundColor = .cellGray
-        view.backgroundColor = .red
-        view.layer.cornerRadius = 6
+        view.backgroundColor = .cellGray
+        view.layer.cornerRadius = 20
         view.layer.shadowColor = UIColor.shadowGray?.cgColor
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 6
@@ -39,7 +38,7 @@ class HomeMovieCell: UITableViewCell {
         let imageView = UIImageView()
         
         imageView.layer.masksToBounds = false
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .white
@@ -47,34 +46,46 @@ class HomeMovieCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var movieDescriptionLabel: UILabel = {
-        let label = UILabel()
-        
-        label.font = .configure(fontSize: 13, weight: .regular)
-        label.textColor = .white
-        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "dasdasdasda"
-        
-        return label
-    }()
-    
     private lazy var movieTitleLabel: UILabel = {
         let label = UILabel()
         
-        label.font = .configure(fontSize: 17, weight: .bold)
-        label.textColor = .white
+        label.font = .configure(fontSize: 20, weight: .bold)
+        label.textColor = .shadowGray
         label.textAlignment = .center
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "pind"
-        
+        label.numberOfLines = 0
+       
         return label
     }()
+    
+    private lazy var movieDescriptionLabel: UITextView = {
+        let textView = UITextView()
+        
+        textView.font = .configure(fontSize: 15, weight: .semibold)
+        textView.textColor = .white
+        textView.textAlignment = .center
+        textView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isEditable = false
+        textView.backgroundColor = .clear
+        
+        return textView
+    }()
+    
 }
 
 
 extension HomeMovieCell {
+    
+    func configureCell(viewModel: HomeMovieModels.ViewModel) {
+        movieTitleLabel.text = viewModel.title
+        movieDescriptionLabel.text = viewModel.overview
+        
+        if let photoUrl = URL(string: viewModel.posterPath) {
+            movieImageView.kf.setImage(with: photoUrl, placeholder: UIImage(systemName: "movie"))
+        }
+    }
     
     func setup() {
         setupViews()
@@ -84,32 +95,33 @@ extension HomeMovieCell {
     
     func setupViews() {
         contentView.addSubview(movieView)
-        
         movieView.addSubview(movieImageView)
         movieView.addSubview(movieTitleLabel)
         movieView.addSubview(movieDescriptionLabel)
     }
     
     func setupConstraints() {
-        movieView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CGFloat(26)).isActive = true
-        movieView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CGFloat(24)).isActive = true
-        movieView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CGFloat(-24)).isActive = true
-        movieView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: CGFloat(-26)).isActive = true
-        movieView.heightAnchor.constraint(equalToConstant: CGFloat(250)).isActive = true
+        movieView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CGFloat(10)).isActive = true
+        movieView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .movieViewLeading).isActive = true
+        movieView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .movieViewTrailing).isActive = true
+        movieView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: .movieViewBottom).isActive = true
+        movieView.heightAnchor.constraint(equalToConstant: .movieViewHeight).isActive = true
         
-        movieImageView.topAnchor.constraint(equalTo: movieView.topAnchor, constant: CGFloat(movieView.bounds.width)).isActive = true
-        movieImageView.leadingAnchor.constraint(equalTo: movieView.leadingAnchor, constant: CGFloat(movieView.bounds.height)).isActive = true
-        movieImageView.widthAnchor.constraint(equalToConstant: CGFloat(150)).isActive = true
-        movieImageView.heightAnchor.constraint(equalToConstant: CGFloat(150)).isActive = true
+        movieImageView.topAnchor.constraint(equalTo: movieView.topAnchor, constant: .movieImageViewTop).isActive = true
+        movieImageView.leadingAnchor.constraint(equalTo: movieView.leadingAnchor, constant: .movieImageViewLeading).isActive = true
+        movieImageView.trailingAnchor.constraint(equalTo: movieView.trailingAnchor, constant: .movieImageViewTrailing).isActive = true
+        movieImageView.bottomAnchor.constraint(equalTo: movieView.bottomAnchor, constant: .movieImageViewBottom).isActive = true
+        movieImageView.widthAnchor.constraint(equalToConstant: .movieImageViewWidth).isActive = true
+        movieImageView.heightAnchor.constraint(equalToConstant: .movieImageViewHeigth).isActive = true
         
-        movieTitleLabel.topAnchor.constraint(equalTo: movieImageView.topAnchor, constant: 2).isActive = true
-        movieTitleLabel.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: CGFloat(16)).isActive = true
-        movieTitleLabel.trailingAnchor.constraint(equalTo: movieDescriptionLabel.leadingAnchor).isActive = true
-        
+        movieTitleLabel.topAnchor.constraint(equalTo: movieView.topAnchor, constant: .movieImageViewTop).isActive = true
+        movieTitleLabel.leadingAnchor.constraint(equalTo: movieView.leadingAnchor, constant: .movieTitleLabelLeading).isActive = true
+        movieTitleLabel.trailingAnchor.constraint(equalTo: movieView.trailingAnchor, constant: .movieImageViewBottom).isActive = true
+
         movieDescriptionLabel.topAnchor.constraint(equalTo: movieTitleLabel.bottomAnchor, constant: 2).isActive = true
         movieDescriptionLabel.leadingAnchor.constraint(equalTo: movieTitleLabel.leadingAnchor).isActive = true
         movieDescriptionLabel.trailingAnchor.constraint(equalTo: movieTitleLabel.trailingAnchor).isActive = true
-        movieDescriptionLabel.bottomAnchor.constraint(equalTo: movieView.bottomAnchor, constant: CGFloat(-16)).isActive = true
+        movieDescriptionLabel.bottomAnchor.constraint(equalTo: movieView.bottomAnchor, constant: .movieImageViewBottom).isActive = true
     }
     
     func setupExtraConfigurations() {

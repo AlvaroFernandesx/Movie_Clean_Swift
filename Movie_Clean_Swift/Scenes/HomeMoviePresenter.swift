@@ -13,11 +13,15 @@
 import UIKit
 
 protocol HomeMoviePresentationLogic {
-    
+    func reloadTableView()
 }
 
 class HomeMoviePresenter: HomeMoviePresentationLogic {
     
-  weak var viewController: HomeMovieDisplayLogic?
+    weak var viewController: HomeMovieDisplayLogic?
+    
+    func reloadTableView() {
+        viewController?.reloadTableView()
+    }
   
 }

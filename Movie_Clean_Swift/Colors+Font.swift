@@ -19,12 +19,32 @@ extension UIFont {
     
     static func configure(fontSize: CGFloat, weight: UIFont.Weight) -> UIFont {
         let systemFont = UIFont.systemFont(ofSize: fontSize, weight: weight)
-        
+
         if let descriptor = systemFont.fontDescriptor.withDesign(.rounded) {
             return UIFont(descriptor: descriptor, size: fontSize)
         }
         
         return systemFont
     }
+    
+}
+
+extension CGFloat {
+    static let movieViewTop = CGFloat(10)
+    static let movieViewBottom = CGFloat(-10)
+    static let movieViewLeading = CGFloat(24)
+    static let movieViewTrailing = CGFloat(-24)
+    static let movieViewHeight = CGFloat(250)
+    
+    static let movieImageViewTop = CGFloat(10)
+    static let movieImageViewBottom = CGFloat(-10)
+    static let movieImageViewLeading = CGFloat(10)
+    static let movieImageViewTrailing = CGFloat(-190)
+    static let movieImageViewWidth = CGFloat(150)
+    static let movieImageViewHeigth = CGFloat(230)
+    
+    static let movieTitleLabelLeading = CGFloat(200)
+    static let movieTitleLabelTrailing = CGFloat(-10)
+    
     
 }

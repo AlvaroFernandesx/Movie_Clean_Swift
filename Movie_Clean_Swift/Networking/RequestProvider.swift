@@ -68,27 +68,3 @@ extension RequestProvider {
     }
     
 }
-
-extension Bundle {
-    
-    var scheme: String {
-        return self.object(forInfoDictionaryKey: "Scheme") as! String
-    }
-    
-    var host: String {
-        return self.object(forInfoDictionaryKey: "Host") as! String
-    }
-    
-}
-
-extension Encodable {
-    
-    func toJSONData() -> Data? {
-        return try? JSONEncoder().encode(self)
-    }
-    
-}
-
-//https://api.themoviedb.org/3/movie/popular?api_key=760f4b73370f8305fcbb6952ed09618f&page=1
-
-//https://api.themoviedb.org/3/movie/76341?api_key=760f4b73370f8305fcbb6952ed09618f&language=pt-BR
