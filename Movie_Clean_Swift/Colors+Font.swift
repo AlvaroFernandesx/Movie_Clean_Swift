@@ -29,6 +29,12 @@ extension UIFont {
     
 }
 
+extension UIImage {
+    
+    static let lupa = #imageLiteral(resourceName: "lupa")
+    
+}
+
 extension CGFloat {
     static let movieViewTop = CGFloat(10)
     static let movieViewBottom = CGFloat(-10)
@@ -46,5 +52,5 @@ extension CGFloat {
     static let movieTitleLabelLeading = CGFloat(200)
     static let movieTitleLabelTrailing = CGFloat(-10)
     
-    
+    static let footerViewSpacing = CGFloat(70)
 }

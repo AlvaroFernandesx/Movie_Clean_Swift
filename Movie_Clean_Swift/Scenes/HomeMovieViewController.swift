@@ -45,17 +45,44 @@ class HomeMovieViewController: UITableViewController {
         interactor?.load()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if let headerView = tableView.tableHeaderView {
+            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            var headerFrame = headerView.frame
+            if height != headerFrame.size.height {
+                headerFrame.size.height = height
+                headerView.frame = headerFrame
+                tableView.tableHeaderView = headerView
+            }
+        }
+        
+        if let footerView = tableView.tableFooterView {
+            let height = CGFloat.footerViewSpacing
+            var footerFrame = footerView.frame
+            if height != footerFrame.size.height {
+                 footerFrame.size.height = height
+                 footerView.frame = footerFrame
+                 tableView.tableFooterView = footerView
+             }
+        }
+    }
+    
     private func setupTableView() {
-        tableView.prefetchDataSource = self
+
         tableView.separatorColor = .clear
         tableView.backgroundColor = .clear
         tableView.layer.backgroundColor = UIColor.clear.cgColor
-//            tableView.refreshControl = customRefreshControl
         tableView.register(HomeMovieCell.self, forCellReuseIdentifier: "MovieCell")
         
-//        let tableHeaderView = RepositoryTableHeaderView()
-//        tableHeaderView.delegate = self
-//        tableView.tableHeaderView = tableHeaderView
+        let tableHeaderView = HomeMovieHeader()
+        tableHeaderView.delegate = self
+        tableView.tableHeaderView = tableHeaderView
+        
+        let tableFooterView = HomeMovieFooter()
+        tableFooterView.delegate = self
+        tableView.tableFooterView = tableFooterView
     }
 
 }
@@ -76,23 +103,30 @@ extension HomeMovieViewController {
 
         return cell
     }
-    
-}
-
-extension HomeMovieViewController: UITableViewDataSourcePrefetching {
-    
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-//            interactor?.requestNextPage(index: indexPath.row)
-        }
-    }
         
 }
-
 
 extension HomeMovieViewController: HomeMovieDisplayLogic {
     
     func reloadTableView() {
         tableView.reloadData()
     }
+    
 }
+
+extension HomeMovieViewController: HomeMovieHeaderDelegate {
+    
+    func searchBarFilter(_ text: String) {
+        interactor?.filterMovies(text)
+    }
+    
+}
+
+extension HomeMovieViewController: HomeMovieFooterDelegate {
+    
+    func getMore() {
+        interactor?.load()
+    }
+    
+}
+

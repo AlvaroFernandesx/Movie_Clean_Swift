@@ -15,6 +15,8 @@ import UIKit
 protocol HomeMovieBusinessLogic {
     func load()
     func cellForRow(at index: Int) -> HomeMovieModels.ViewModel?
+    func filterMovies(_ name: String)
+    
     var numberOfRows: Int { get }
 }
 
@@ -27,13 +29,17 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     var presenter: HomeMoviePresentationLogic?
     var worker: HomeMovieWorker?
     var movies = [HomeMovieModels.Movie]()
+    var filteredMovies: [HomeMovieModels.Movie] = []
+    let textNil = ""
+    var countFilm = 0
     
     init(worker: HomeMovieWorker = HomeMovieWorker()) {
       self.worker = worker
     }
     
     func load() {
-        worker?.getData(movieApi: MovieApi.newMovies, page: 1).done(handleRequestSuccess).catch(handleRequestFailure)
+        countFilm += 1
+        worker?.getData(movieApi: MovieApi.newMovies, page: countFilm).done(handleRequestSuccess).catch(handleRequestFailure)
     }
     
     var numberOfRows: Int {
@@ -48,11 +54,21 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     
     private func handleRequestSuccess(_ response: HomeMovieModels.MovieApiResponse) {
         self.movies.append(contentsOf: response.movies)
+        self.filteredMovies = movies
         presenter?.reloadTableView()
     }
     
     private func handleRequestFailure(_ error: Error) {
 //        presenter?.presentError(error)
+    }
+    
+    func filterMovies(_ searchText: String) {
+        if searchText != textNil {
+            movies = filteredMovies.filter { $0.title.contains(searchText) }
+        } else {
+            movies = filteredMovies
+        }
+        presenter?.reloadTableView()
     }
 
     

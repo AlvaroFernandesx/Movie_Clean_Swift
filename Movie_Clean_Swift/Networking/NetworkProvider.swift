@@ -13,6 +13,7 @@ class NetworkProvider {
     
     func execute<T: Decodable>(request: RequestProvider, parser: T.Type) -> Promise<T> {
         return Promise<T> { seal in
+            print(request.asURLRequest)
             URLSession.shared.dataTask(with: request.asURLRequest) { (data, response, _) in
                 let statusCode = self.handleNetworkResponse((response as? HTTPURLResponse)?.statusCode ?? 0)
                 switch statusCode {
@@ -23,7 +24,8 @@ class NetworkProvider {
                         seal.fulfill(model)
                         print(model)
                     } catch {
-                        seal.reject(error)
+                        print("caiu no catch")
+                        seal.reject(NSError(domain: "\(statusCode)", code: 0, userInfo: nil))
                     }
                 case .failure(_):
                     seal.reject(NSError(domain: "\(statusCode)", code: 0, userInfo: nil))
