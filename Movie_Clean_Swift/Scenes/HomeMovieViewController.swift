@@ -116,6 +116,14 @@ extension HomeMovieViewController: HomeMovieDisplayLogic {
 
 extension HomeMovieViewController: HomeMovieHeaderDelegate {
     
+    func changeForPopular() {
+        interactor?.changeForPopular()
+    }
+    
+    func changeForNew() {
+        interactor?.changeForNew()
+    }
+    
     func searchBarFilter(_ text: String) {
         interactor?.filterMovies(text)
     }
@@ -127,6 +135,6 @@ extension HomeMovieViewController: HomeMovieFooterDelegate {
     func getMore() {
         interactor?.load()
     }
-    
+ 
 }
 

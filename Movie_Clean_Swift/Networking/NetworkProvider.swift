@@ -24,8 +24,8 @@ class NetworkProvider {
                         seal.fulfill(model)
                         print(model)
                     } catch {
-                        print("caiu no catch")
-                        seal.reject(NSError(domain: "\(statusCode)", code: 0, userInfo: nil))
+                        print(statusCode)
+                        seal.reject(error)
                     }
                 case .failure(_):
                     seal.reject(NSError(domain: "\(statusCode)", code: 0, userInfo: nil))

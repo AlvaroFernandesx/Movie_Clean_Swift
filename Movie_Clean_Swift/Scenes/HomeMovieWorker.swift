@@ -22,6 +22,7 @@ class HomeMovieWorker  {
     }
 
     func getData(movieApi: MovieApi, page: Int) -> Promise<HomeMovieModels.MovieApiResponse> {
+        print(movieApi)
         let requestProvider = HomeMovieProvider(movieApi: movieApi, page: page)
         return networkProvider.execute(request: requestProvider, parser: HomeMovieModels.MovieApiResponse.self)
     }

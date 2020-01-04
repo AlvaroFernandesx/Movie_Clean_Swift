@@ -2,12 +2,10 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "pngfuel.com.png",
-      "compression-type" : "automatic"
+      "filename" : "WorldOfWarcraftOrc.jpg"
     },
     {
       "idiom" : "universal",
-      "filename" : "lupaWhite.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -19,8 +17,5 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "original"
   }
 }

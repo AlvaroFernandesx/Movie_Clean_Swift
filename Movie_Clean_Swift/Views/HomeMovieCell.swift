@@ -63,7 +63,7 @@ class HomeMovieCell: UITableViewCell {
         let textView = UITextView()
         
         textView.font = .configure(fontSize: 15, weight: .semibold)
-        textView.textColor = .white
+        textView.textColor = .fontWhite
         textView.textAlignment = .center
         textView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         textView.translatesAutoresizingMaskIntoConstraints = false

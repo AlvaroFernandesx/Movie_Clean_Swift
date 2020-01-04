@@ -13,6 +13,7 @@ extension UIColor {
     static let cellGray = UIColor(named: "cellGray")
     static let shadowGray = UIColor(named: "shadowGray")
     static let fontDark = UIColor(named: "fontDark")
+    static let fontWhite = UIColor(named: "greenWhite")
 }
 
 extension UIFont {
@@ -32,6 +33,8 @@ extension UIFont {
 extension UIImage {
     
     static let lupa = #imageLiteral(resourceName: "lupa")
+    static let newMovie = #imageLiteral(resourceName: "newMoview")
+    static let popular = #imageLiteral(resourceName: "popular")
     
 }
 
@@ -49,7 +52,7 @@ extension CGFloat {
     static let movieImageViewWidth = CGFloat(150)
     static let movieImageViewHeigth = CGFloat(230)
     
-    static let movieTitleLabelLeading = CGFloat(200)
+    static let movieTitleLabelLeading = CGFloat(150)
     static let movieTitleLabelTrailing = CGFloat(-10)
     
     static let footerViewSpacing = CGFloat(70)

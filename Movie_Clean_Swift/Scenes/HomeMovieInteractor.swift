@@ -16,6 +16,8 @@ protocol HomeMovieBusinessLogic {
     func load()
     func cellForRow(at index: Int) -> HomeMovieModels.ViewModel?
     func filterMovies(_ name: String)
+    func changeForPopular()
+    func changeForNew()
     
     var numberOfRows: Int { get }
 }
@@ -28,18 +30,17 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     
     var presenter: HomeMoviePresentationLogic?
     var worker: HomeMovieWorker?
+    
     var movies = [HomeMovieModels.Movie]()
     var filteredMovies: [HomeMovieModels.Movie] = []
+    var moviesPopular: [HomeMovieModels.Movie] = []
+    var moviesNew: [HomeMovieModels.Movie] = []
+    
     let textNil = ""
-    var countFilm = 0
+    var countPage = 2
     
     init(worker: HomeMovieWorker = HomeMovieWorker()) {
       self.worker = worker
-    }
-    
-    func load() {
-        countFilm += 1
-        worker?.getData(movieApi: MovieApi.newMovies, page: countFilm).done(handleRequestSuccess).catch(handleRequestFailure)
     }
     
     var numberOfRows: Int {
@@ -52,9 +53,31 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
         return HomeMovieModels.ViewModel(movie: movie)
     }
     
+    func load() {
+        loadPopularMovie()
+        loadNewMovie()
+        countPage += 1
+    }
+    
+    func loadPopularMovie() {
+        worker?.getData(movieApi: MovieApi.popular, page: countPage).done(handleRequestSuccessPopular).catch(handleRequestFailure)
+    }
+    
+    func loadNewMovie() {
+        worker?.getData(movieApi: MovieApi.newMovies, page: countPage).done(handleRequestSuccess).catch(handleRequestFailure)
+    }
+    
     private func handleRequestSuccess(_ response: HomeMovieModels.MovieApiResponse) {
-        self.movies.append(contentsOf: response.movies)
-        self.filteredMovies = movies
+        self.moviesNew.append(contentsOf: response.movies)
+        self.filteredMovies = moviesNew
+        self.movies = moviesNew
+        presenter?.reloadTableView()
+    }
+    
+    private func handleRequestSuccessPopular(_ response: HomeMovieModels.MovieApiResponse) {
+        self.moviesPopular.append(contentsOf: response.movies)
+        self.filteredMovies = moviesPopular
+        self.movies = moviesPopular
         presenter?.reloadTableView()
     }
     
@@ -70,6 +93,17 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
         }
         presenter?.reloadTableView()
     }
-
+    
+    func changeForPopular() {
+        self.filteredMovies = moviesPopular
+        self.movies = moviesPopular
+        presenter?.reloadTableView()
+    }
+    
+    func changeForNew() {
+        self.filteredMovies = moviesNew
+        self.movies = moviesNew
+        presenter?.reloadTableView()
+    }
     
 }

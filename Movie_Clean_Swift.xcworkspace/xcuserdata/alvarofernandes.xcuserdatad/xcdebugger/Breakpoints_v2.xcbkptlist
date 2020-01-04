@@ -7,126 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EF2E86DA-4DAD-4D01-AB35-C08F70B7C8DA"
+            uuid = "27468D94-B47C-43F4-A540-20C938E7025B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movie_Clean_Swift/Networking/NetworkProvider.swift"
+            filePath = "Movie_Clean_Swift/Scenes/HomeMovieInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "execute(request:parser:)"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "changeForNew()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8599DD16-80AC-467C-BEE9-5A5F08A9E2BE"
+            uuid = "801AF5AE-9809-44BE-8705-2BB535A82A2F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movie_Clean_Swift/Networking/NetworkProvider.swift"
+            filePath = "Movie_Clean_Swift/Scenes/HomeMovieInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "execute(request:parser:)"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "changeForPopular()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B74407BD-9E50-499B-9A53-CCC212936F72"
+            uuid = "E6F8A74B-E63C-4A3F-9495-B2E239B848BD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movie_Clean_Swift/Networking/NetworkProvider.swift"
+            filePath = "Movie_Clean_Swift/Views/HomeMovieHeader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "handleNetworkResponse(_:)"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "changeForNew()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B74407BD-9E50-499B-9A53-CCC212936F72 - 61bd0e4f4c1f49ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Movie_Clean_Swift.NetworkProvider.(handleNetworkResponse in _BA59CC43C20BA8D8BF3DA543FB993D47)(Swift.Int) -&gt; Movie_Clean_Swift.Result&lt;Swift.String&gt;"
-                  moduleName = "Movie_Clean_Swift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alvarofernandes/Documents/GitHub/Movie_Clean_Swift/Movie_Clean_Swift/Networking/NetworkProvider.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "126">
-               </Location>
-               <Location
-                  uuid = "B74407BD-9E50-499B-9A53-CCC212936F72 - 61bd0e4f4c1f49ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Movie_Clean_Swift.NetworkProvider.(handleNetworkResponse in _BA59CC43C20BA8D8BF3DA543FB993D47)(Swift.Int) -&gt; Movie_Clean_Swift.Result&lt;Swift.String&gt;"
-                  moduleName = "Movie_Clean_Swift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alvarofernandes/Documents/GitHub/Movie_Clean_Swift/Movie_Clean_Swift/Networking/NetworkProvider.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "340">
-               </Location>
-               <Location
-                  uuid = "B74407BD-9E50-499B-9A53-CCC212936F72 - 61bd0e4f4c1f49ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Movie_Clean_Swift.NetworkProvider.(handleNetworkResponse in _BA59CC43C20BA8D8BF3DA543FB993D47)(Swift.Int) -&gt; Movie_Clean_Swift.Result&lt;Swift.String&gt;"
-                  moduleName = "Movie_Clean_Swift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alvarofernandes/Documents/GitHub/Movie_Clean_Swift/Movie_Clean_Swift/Networking/NetworkProvider.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "514">
-               </Location>
-               <Location
-                  uuid = "B74407BD-9E50-499B-9A53-CCC212936F72 - 61bd0e4f4c1f49ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Movie_Clean_Swift.NetworkProvider.(handleNetworkResponse in _BA59CC43C20BA8D8BF3DA543FB993D47)(Swift.Int) -&gt; Movie_Clean_Swift.Result&lt;Swift.String&gt;"
-                  moduleName = "Movie_Clean_Swift"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alvarofernandes/Documents/GitHub/Movie_Clean_Swift/Movie_Clean_Swift/Networking/NetworkProvider.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "715">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7E04B8A7-1D51-4F9F-8FA1-9588C2D040D5"
+            uuid = "D3076BD6-5535-4E60-A398-8732CD4B6CA1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movie_Clean_Swift/Networking/NetworkProvider.swift"
+            filePath = "Movie_Clean_Swift/Views/HomeMovieHeader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "execute(request:parser:)"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "changeForPopular()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

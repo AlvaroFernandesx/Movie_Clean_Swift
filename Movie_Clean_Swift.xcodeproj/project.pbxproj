@@ -64,7 +64,7 @@
 		D30CF1A023BAE2DF009AF596 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		D30CF1A323BAE7A0009AF596 /* HomeMovieProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMovieProvider.swift; sourceTree = "<group>"; };
 		D30F28CB23B9AFE6009EAEF5 /* HomeMovieWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMovieWorker.swift; sourceTree = "<group>"; };
-		D356513823B9861D009E928D /* Movie_Clean_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie_Clean_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D356513823B9861D009E928D /* Alvão Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alvão Movies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D356513B23B9861D009E928D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D356513D23B9861D009E928D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D356514123B9861E009E928D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 		D356513923B9861D009E928D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D356513823B9861D009E928D /* Movie_Clean_Swift.app */,
+				D356513823B9861D009E928D /* Alvão Movies.app */,
 				D356514E23B9861E009E928D /* Movie_Clean_SwiftTests.xctest */,
 				D356515923B9861E009E928D /* Movie_Clean_SwiftUITests.xctest */,
 			);
@@ -279,7 +279,7 @@
 			);
 			name = Movie_Clean_Swift;
 			productName = Movie_Clean_Swift;
-			productReference = D356513823B9861D009E928D /* Movie_Clean_Swift.app */;
+			productReference = D356513823B9861D009E928D /* Alvão Movies.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D356514D23B9861E009E928D /* Movie_Clean_SwiftTests */ = {
@@ -698,6 +698,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CXZ74CB7JF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Movie_Clean_Swift/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -705,7 +706,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Alvaro-Fernandes.Movie-Clean-Swift";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Alvão Movies";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -717,6 +718,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CXZ74CB7JF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Movie_Clean_Swift/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -724,7 +726,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Alvaro-Fernandes.Movie-Clean-Swift";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Alvão Movies";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

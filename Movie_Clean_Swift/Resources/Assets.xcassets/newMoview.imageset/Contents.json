@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "pngfuel.com.png",
-      "compression-type" : "automatic"
+      "filename" : "Captura de Tela 2020-01-03 às 20.19.09.png"
     },
     {
       "idiom" : "universal",
-      "filename" : "lupaWhite.png",
+      "filename" : "Captura de Tela 2020-01-03 às 20.17.00.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -19,8 +18,5 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "original"
   }
 }
