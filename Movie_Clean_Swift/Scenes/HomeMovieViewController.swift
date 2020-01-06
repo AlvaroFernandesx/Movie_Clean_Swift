@@ -133,7 +133,7 @@ extension HomeMovieViewController: HomeMovieHeaderDelegate {
 extension HomeMovieViewController: HomeMovieFooterDelegate {
     
     func getMore() {
-        interactor?.load()
+        interactor?.getMore()
     }
  
 }

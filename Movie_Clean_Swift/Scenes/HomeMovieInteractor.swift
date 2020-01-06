@@ -18,6 +18,7 @@ protocol HomeMovieBusinessLogic {
     func filterMovies(_ name: String)
     func changeForPopular()
     func changeForNew()
+    func getMore()
     
     var numberOfRows: Int { get }
 }
@@ -30,6 +31,7 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     
     var presenter: HomeMoviePresentationLogic?
     var worker: HomeMovieWorker?
+    var typeTable: MovieApi?
     
     var movies = [HomeMovieModels.Movie]()
     var filteredMovies: [HomeMovieModels.Movie] = []
@@ -37,7 +39,8 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     var moviesNew: [HomeMovieModels.Movie] = []
     
     let textNil = ""
-    var countPage = 2
+    var countPopular = 1
+    var countNew = 1
     
     init(worker: HomeMovieWorker = HomeMovieWorker()) {
       self.worker = worker
@@ -54,23 +57,26 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     }
     
     func load() {
+        DispatchQueue.main.async {
+            self.loadNewMovie()
+        }
         loadPopularMovie()
-        loadNewMovie()
-        countPage += 1
     }
     
     func loadPopularMovie() {
-        worker?.getData(movieApi: MovieApi.popular, page: countPage).done(handleRequestSuccessPopular).catch(handleRequestFailure)
+        worker?.getData(movieApi: MovieApi.popular, page: countPopular).done(handleRequestSuccessPopular).catch(handleRequestFailure)
     }
     
     func loadNewMovie() {
-        worker?.getData(movieApi: MovieApi.newMovies, page: countPage).done(handleRequestSuccess).catch(handleRequestFailure)
+        worker?.getData(movieApi: MovieApi.newMovies, page: countNew).done(handleRequestSuccess).catch(handleRequestFailure)
     }
     
     private func handleRequestSuccess(_ response: HomeMovieModels.MovieApiResponse) {
         self.moviesNew.append(contentsOf: response.movies)
         self.filteredMovies = moviesNew
         self.movies = moviesNew
+        self.typeTable = MovieApi.newMovies
+        self.countNew += 1
         presenter?.reloadTableView()
     }
     
@@ -78,6 +84,8 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
         self.moviesPopular.append(contentsOf: response.movies)
         self.filteredMovies = moviesPopular
         self.movies = moviesPopular
+        self.typeTable = MovieApi.popular
+        self.countPopular += 1
         presenter?.reloadTableView()
     }
     
@@ -97,13 +105,23 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     func changeForPopular() {
         self.filteredMovies = moviesPopular
         self.movies = moviesPopular
+        self.typeTable = MovieApi.popular
         presenter?.reloadTableView()
     }
     
     func changeForNew() {
         self.filteredMovies = moviesNew
         self.movies = moviesNew
+        self.typeTable = MovieApi.newMovies
         presenter?.reloadTableView()
+    }
+    
+    func getMore() {
+        if typeTable == MovieApi.popular {
+            loadPopularMovie()
+        } else {
+            loadNewMovie()
+        }
     }
     
 }

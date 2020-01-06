@@ -163,8 +163,6 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         return imageView
     }()
     
-    
-    
     func setup() {
         setupViews()
         setupConstraints()
@@ -190,7 +188,6 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(0)).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat(-10)).isActive = true
         contentView.heightAnchor.constraint(equalToConstant: CGFloat(250)).isActive = true
-        contentView.widthAnchor.constraint(equalToConstant: CGFloat(200)).isActive = true
         
         searchButton.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat(0)).isActive = true
         searchButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(-10)).isActive = true
@@ -200,19 +197,16 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         searchView.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat(0)).isActive = true
         searchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(0)).isActive = true
         searchView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(-10)).isActive = true
-        searchView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         searchView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         newMovieImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat(-15)).isActive = true
         newMovieImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(200)).isActive = true
         newMovieImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(-25)).isActive = true
-        newMovieImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
         newMovieImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         popularImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat(-15)).isActive = true
         popularImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(25)).isActive = true
         popularImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(-200)).isActive = true
-        popularImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
         popularImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         newMovieLabel.bottomAnchor.constraint(equalTo: newMovieImage.bottomAnchor, constant: CGFloat(40)).isActive = true
@@ -228,13 +222,11 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         newMovieView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat(-15)).isActive = true
         newMovieView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(200)).isActive = true
         newMovieView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(-25)).isActive = true
-        newMovieView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         newMovieView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         popularView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat(-15)).isActive = true
         popularView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(25)).isActive = true
         popularView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(-200)).isActive = true
-        popularView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         popularView.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
     

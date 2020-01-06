@@ -22,7 +22,7 @@ class NetworkProvider {
                     do {
                         let model = try JSONDecoder().decode(T.self, from: data)
                         seal.fulfill(model)
-                        print(model)
+//                        print(model)
                     } catch {
                         print(statusCode)
                         seal.reject(error)

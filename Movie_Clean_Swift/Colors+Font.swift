@@ -45,8 +45,8 @@ extension CGFloat {
     static let movieViewTrailing = CGFloat(-24)
     static let movieViewHeight = CGFloat(250)
     
-    static let movieImageViewTop = CGFloat(10)
-    static let movieImageViewBottom = CGFloat(-10)
+    static let movieImageViewTop = CGFloat(15)
+    static let movieImageViewBottom = CGFloat(-15)
     static let movieImageViewLeading = CGFloat(10)
     static let movieImageViewTrailing = CGFloat(-190)
     static let movieImageViewWidth = CGFloat(150)

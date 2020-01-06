@@ -65,17 +65,11 @@ class HomeMovieFooter: UIView {
         contentView.topAnchor.constraint(equalTo: topAnchor, constant: CGFloat(10)).isActive = true
         contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat(0)).isActive = true
         contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat(0)).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: CGFloat(-200)).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: CGFloat(500)).isActive = true
-        contentView.widthAnchor.constraint(equalToConstant: CGFloat(200)).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: CGFloat(300)).isActive = true
         
         bottomLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CGFloat(10)).isActive = true
         bottomLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CGFloat(10)).isActive = true
         bottomLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CGFloat(-10)).isActive = true
-        bottomLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: CGFloat(-200)).isActive = true
-        bottomLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        bottomLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
     }
     
     @objc func getMore() {
