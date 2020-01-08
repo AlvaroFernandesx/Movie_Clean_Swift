@@ -143,7 +143,7 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.alpha = 0.7
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeForPopular)))
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeForNew)))
         imageView.backgroundColor = .clear
         
         return imageView
@@ -157,7 +157,7 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeForNew)))
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeForPopular)))
         imageView.backgroundColor = .clear
         
         return imageView

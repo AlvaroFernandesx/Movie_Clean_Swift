@@ -85,13 +85,13 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     func changeForNew() {
         self.moviesNew.removeAll()
         typeTable = MovieApi.newMovies
-        load(popularProvider)
+        load(newProvider)
     }
     
     func changeForPopular() {
         self.moviesNew.removeAll()
         typeTable = MovieApi.popular
-        load(newProvider)
+        load(popularProvider)
     }
     
     func getMore() {
