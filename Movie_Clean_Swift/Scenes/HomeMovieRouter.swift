@@ -13,26 +13,27 @@
 import UIKit
 
 @objc protocol HomeMovieRoutingLogic {
-  
+    func showError(_ title: String, _ message: String)
 }
 
 protocol HomeMovieDataPassing {
-  var dataStore: HomeMovieDataStore? { get }
+    var dataStore: HomeMovieDataStore? { get }
 }
 
 class HomeMovieRouter: NSObject, HomeMovieRoutingLogic, HomeMovieDataPassing {
     
     weak var viewController: HomeMovieViewController?
     var dataStore: HomeMovieDataStore?
-  
-//    func routeToAny(){
-//        guard let destinationVC = NextViewController() else { return }
-//        var destinationDS = destinationVC.router!.dataStore!
-//        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
-//    }
-//
-//    func passDataToSomewhere(source: HomeMovieDataStore, destination: inout NextDataStore) {
-//      destination.session = source.session
-//    }
+    
+    func showError(_ title: String, _ message: String) {
+        showAlert(title, message)
+    }
+    
+    private func showAlert(_ title: String, _ message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
+        }
+        alert.addAction(action)
+        viewController?.present(alert, animated: true, completion: nil)
+    }
 }

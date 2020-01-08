@@ -15,32 +15,30 @@ class NetworkProvider {
         return Promise<T> { seal in
             print(request.asURLRequest)
             URLSession.shared.dataTask(with: request.asURLRequest) { (data, response, _) in
-                let statusCode = self.handleNetworkResponse((response as? HTTPURLResponse)?.statusCode ?? 0)
+                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
                 switch statusCode {
-                case .success:
+                case 200...299:
                     let data = data ?? Data()
                     do {
                         let model = try JSONDecoder().decode(T.self, from: data)
                         seal.fulfill(model)
-//                        print(model)
                     } catch {
                         print(statusCode)
-                        seal.reject(error)
+                        seal.reject(NetworkResponse.unableToDecode)
                     }
-                case .failure(_):
-                    seal.reject(NSError(domain: "\(statusCode)", code: 0, userInfo: nil))
+                default :
+                    seal.reject(self.handleNetworkResponse(statusCode))
                 }
             }.resume()
         }
     }
     
-    fileprivate func handleNetworkResponse(_ response: Int) -> Result<String> {
+    fileprivate func handleNetworkResponse(_ response: Int) -> NetworkResponse {
         switch response {
-        case 200...299: return .success
-        case 401...500: return .failure(NetworkResponse.authenticationError.rawValue)
-        case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
-        case 600: return .failure(NetworkResponse.outdated.rawValue)
-        default: return .failure(NetworkResponse.failed.rawValue)
+        case 401...500: return NetworkResponse.authenticationError
+        case 501...599: return NetworkResponse.badRequest
+        case 600: return NetworkResponse.outdated
+        default: return NetworkResponse.failed
         }
     }
     

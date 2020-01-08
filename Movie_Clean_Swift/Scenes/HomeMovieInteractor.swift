@@ -13,7 +13,7 @@
 import UIKit
 
 protocol HomeMovieBusinessLogic {
-    func load()
+    func load(_ provider: RequestProvider)
     func cellForRow(at index: Int) -> HomeMovieModels.ViewModel?
     func filterMovies(_ name: String)
     func changeForPopular()
@@ -35,15 +35,17 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
     
     var movies = [HomeMovieModels.Movie]()
     var filteredMovies: [HomeMovieModels.Movie] = []
-    var moviesPopular: [HomeMovieModels.Movie] = []
     var moviesNew: [HomeMovieModels.Movie] = []
     
+    let newProvider: HomeNewMovieProvider
+    var popularProvider: HomePopularMovieProvider
+    
     let textNil = ""
-    var countPopular = 1
-    var countNew = 1
     
     init(worker: HomeMovieWorker = HomeMovieWorker()) {
-      self.worker = worker
+        self.worker = worker
+        self.newProvider = HomeNewMovieProvider()
+        self.popularProvider = HomePopularMovieProvider()
     }
     
     var numberOfRows: Int {
@@ -56,71 +58,54 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
         return HomeMovieModels.ViewModel(movie: movie)
     }
     
-    func load() {
-        DispatchQueue.main.async {
-            self.loadNewMovie()
-        }
-        loadPopularMovie()
-    }
-    
-    func loadPopularMovie() {
-        worker?.getData(movieApi: MovieApi.popular, page: countPopular).done(handleRequestSuccessPopular).catch(handleRequestFailure)
-    }
-    
-    func loadNewMovie() {
-        worker?.getData(movieApi: MovieApi.newMovies, page: countNew).done(handleRequestSuccess).catch(handleRequestFailure)
+    func load(_ provider: RequestProvider) {
+        worker?.getMovies(provider).done(handleRequestSuccess).catch(handleRequestFailure)
     }
     
     private func handleRequestSuccess(_ response: HomeMovieModels.MovieApiResponse) {
         self.moviesNew.append(contentsOf: response.movies)
         self.filteredMovies = moviesNew
         self.movies = moviesNew
-        self.typeTable = MovieApi.newMovies
-        self.countNew += 1
-        presenter?.reloadTableView()
-    }
-    
-    private func handleRequestSuccessPopular(_ response: HomeMovieModels.MovieApiResponse) {
-        self.moviesPopular.append(contentsOf: response.movies)
-        self.filteredMovies = moviesPopular
-        self.movies = moviesPopular
-        self.typeTable = MovieApi.popular
-        self.countPopular += 1
         presenter?.reloadTableView()
     }
     
     private func handleRequestFailure(_ error: Error) {
-//        presenter?.presentError(error)
+        presenter?.showError()
     }
     
     func filterMovies(_ searchText: String) {
         if searchText != textNil {
-            movies = filteredMovies.filter { $0.title.contains(searchText) }
+            movies = filteredMovies.filter { ($0.title.contains(searchText)) }
         } else {
             movies = filteredMovies
         }
         presenter?.reloadTableView()
     }
-    
-    func changeForPopular() {
-        self.filteredMovies = moviesPopular
-        self.movies = moviesPopular
-        self.typeTable = MovieApi.popular
-        presenter?.reloadTableView()
+
+    func changeForNew() {
+        self.moviesNew.removeAll()
+        typeTable = MovieApi.newMovies
+        load(popularProvider)
     }
     
-    func changeForNew() {
-        self.filteredMovies = moviesNew
-        self.movies = moviesNew
-        self.typeTable = MovieApi.newMovies
-        presenter?.reloadTableView()
+    func changeForPopular() {
+        self.moviesNew.removeAll()
+        typeTable = MovieApi.popular
+        load(newProvider)
     }
     
     func getMore() {
-        if typeTable == MovieApi.popular {
-            loadPopularMovie()
-        } else {
-            loadNewMovie()
+        load(getTypeTable())
+    }
+    
+    private func getTypeTable() -> RequestProvider {
+        switch typeTable {
+        case .newMovies:
+            newProvider.page += 1
+            return newProvider
+        default:
+            popularProvider.page += 1
+            return popularProvider
         }
     }
     

@@ -8,20 +8,13 @@
 
 import Foundation
 
-class HomeMovieProvider: RequestProvider {
+class HomePopularMovieProvider: RequestProvider {
 
-    var movieApi: MovieApi
-    var page: Int
+    public var page: Int = 2
     
     var path: String {
-        switch movieApi {
-        case .popular:
-            return "/3/movie/popular"
-        case .newMovies:
-            return "/3/movie/now_playing"
-        }
+        return "/3/movie/popular"
     }
-    
 
     var httpVerb: HTTPMethod {
         return .get
@@ -31,12 +24,6 @@ class HomeMovieProvider: RequestProvider {
         return [URLQueryItem(name: "api_key", value: "760f4b73370f8305fcbb6952ed09618f"),
                 URLQueryItem(name: "language", value: "pt-BR"),
                 URLQueryItem(name: "page", value: "\(page)")]
-    }
-    
-    init(movieApi: MovieApi, page: Int) {
-        self.movieApi = movieApi
-        print(movieApi)
-        self.page = page
     }
     
 }

@@ -13,7 +13,8 @@
 import UIKit
 
 protocol HomeMovieDisplayLogic: class {
-  func reloadTableView()
+    func reloadTableView()
+    func showError(_ title: String, _ message: String)
 }
 
 class HomeMovieViewController: UITableViewController {
@@ -42,7 +43,7 @@ class HomeMovieViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        interactor?.load()
+        interactor?.changeForPopular()
     }
     
     override func viewDidLayoutSubviews() {
@@ -110,6 +111,10 @@ extension HomeMovieViewController: HomeMovieDisplayLogic {
     
     func reloadTableView() {
         tableView.reloadData()
+    }
+    
+    func showError(_ title: String, _ message: String) {
+        router?.showError(title, message)
     }
     
 }
