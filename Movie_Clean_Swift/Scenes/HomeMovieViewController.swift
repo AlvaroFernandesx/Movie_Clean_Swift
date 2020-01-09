@@ -138,7 +138,8 @@ extension HomeMovieViewController: HomeMovieHeaderDelegate {
 extension HomeMovieViewController: HomeMovieFooterDelegate {
     
     func getMore() {
-        interactor?.getMore()
+        guard let type = interactor?.getTypeTable() else { return }
+        interactor?.load(type)
     }
  
 }

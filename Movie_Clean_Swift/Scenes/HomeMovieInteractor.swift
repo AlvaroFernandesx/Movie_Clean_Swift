@@ -14,11 +14,11 @@ import UIKit
 
 protocol HomeMovieBusinessLogic {
     func load(_ provider: RequestProvider)
+    func getTypeTable() -> RequestProvider
     func cellForRow(at index: Int) -> HomeMovieModels.ViewModel?
     func filterMovies(_ name: String)
     func changeForPopular()
     func changeForNew()
-    func getMore()
     
     var numberOfRows: Int { get }
 }
@@ -62,14 +62,14 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
         worker?.getMovies(provider).done(handleRequestSuccess).catch(handleRequestFailure)
     }
     
-    private func handleRequestSuccess(_ response: HomeMovieModels.MovieApiResponse) {
+    func handleRequestSuccess(_ response: HomeMovieModels.MovieApiResponse) {
         self.moviesNew.append(contentsOf: response.movies)
         self.filteredMovies = moviesNew
         self.movies = moviesNew
         presenter?.reloadTableView()
     }
     
-    private func handleRequestFailure(_ error: Error) {
+    func handleRequestFailure(_ error: Error) {
         presenter?.showError()
     }
     
@@ -94,11 +94,7 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
         load(popularProvider)
     }
     
-    func getMore() {
-        load(getTypeTable())
-    }
-    
-    private func getTypeTable() -> RequestProvider {
+    func getTypeTable() -> RequestProvider {
         switch typeTable {
         case .newMovies:
             newProvider.page += 1

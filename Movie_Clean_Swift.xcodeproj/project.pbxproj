@@ -243,8 +243,8 @@
 			isa = PBXGroup;
 			children = (
 				D30CF1A223BAE78C009AF596 /* Provider */,
-				D3DE71F923B99771002EEA81 /* HomeMoviePresenter.swift */,
 				D30F28CB23B9AFE6009EAEF5 /* HomeMovieWorker.swift */,
+				D3DE71F923B99771002EEA81 /* HomeMoviePresenter.swift */,
 				D3DE71FA23B99771002EEA81 /* HomeMovieRouter.swift */,
 				D3DE71FB23B99771002EEA81 /* HomeMovieModels.swift */,
 				D3DE71FC23B99771002EEA81 /* HomeMovieViewController.swift */,
@@ -754,7 +754,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movie_Clean_Swift.app/Movie_Clean_Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alvão Movies.app/Alvão Movies";
 			};
 			name = Debug;
 		};
@@ -776,7 +776,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movie_Clean_Swift.app/Movie_Clean_Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alvão Movies.app/Alvão Movies";
 			};
 			name = Release;
 		};
