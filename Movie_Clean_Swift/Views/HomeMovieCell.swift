@@ -22,7 +22,7 @@ class HomeMovieCell: UITableViewCell {
     
     private lazy var movieView: UIView = {
         let view = UIView()
-        
+        view.endEditing(true)
         view.backgroundColor = .cellGray
         view.layer.cornerRadius = 20
         view.layer.shadowColor = UIColor.shadowGray?.cgColor
@@ -105,12 +105,12 @@ extension HomeMovieCell {
         movieView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .movieViewLeading).isActive = true
         movieView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: .movieViewTrailing).isActive = true
         movieView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: .movieViewBottom).isActive = true
+        movieView.heightAnchor.constraint(equalToConstant: .movieImageViewHeigth).isActive = true
         
         movieImageView.topAnchor.constraint(equalTo: movieView.topAnchor, constant: .movieImageViewTop).isActive = true
         movieImageView.leadingAnchor.constraint(equalTo: movieView.leadingAnchor, constant: .movieImageViewLeading).isActive = true
         movieImageView.trailingAnchor.constraint(equalTo: movieView.trailingAnchor, constant: .movieImageViewTrailing).isActive = true
         movieImageView.bottomAnchor.constraint(equalTo: movieView.bottomAnchor, constant: .movieImageViewBottom).isActive = true
-        movieImageView.heightAnchor.constraint(equalToConstant: .movieImageViewHeigth).isActive = true
         
         movieTitleLabel.topAnchor.constraint(equalTo: movieView.topAnchor, constant: .movieImageViewTop).isActive = true
         movieTitleLabel.leadingAnchor.constraint(equalTo: movieView.leadingAnchor, constant: .movieTitleLabelLeading).isActive = true

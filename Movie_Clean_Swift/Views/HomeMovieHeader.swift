@@ -35,7 +35,7 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .cellGray
         view.layer.cornerRadius = 30
-        
+        view.endEditing(true)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideSearchBar)))
         
         return view
@@ -142,7 +142,6 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.alpha = 0.7
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeForNew)))
         imageView.backgroundColor = .clear
         
@@ -239,6 +238,10 @@ class HomeMovieHeader: UIView, UISearchBarDelegate {
         }
         )
     }
+    
+//    @objc func hideKeyboard() {
+//        UIView.endEditing(true)
+//    }
     
     @objc func showSearchBar() {
         UIView.animate(

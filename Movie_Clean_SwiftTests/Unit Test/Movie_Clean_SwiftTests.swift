@@ -67,14 +67,14 @@ class Movie_Clean_SwiftTests: QuickSpec {
         
         describe("#load") {
             context("when is success") {
-                it("return cars") {
+                it("returns a movie list") {
                     self.mockWorker.isSucesss = true
                     self.subject.handleRequestSuccess(self.mockWorker.getMovies(self.provider).value!)
                     expect(self.dummyHomePresenter.hasCalledReloadCollection).to(beTrue())
                 }
             }
             context("when is failed") {
-                it("return error") {
+                it("show error pop up") {
                     self.mockWorker.isSucesss = false
                     self.subject.handleRequestFailure(self.mockWorker.getMovies(self.provider).error!)
                     expect(self.dummyHomePresenter.hasCalledError).to(beTrue())
