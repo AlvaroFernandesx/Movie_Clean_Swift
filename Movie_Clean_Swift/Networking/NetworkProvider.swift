@@ -23,7 +23,6 @@ class NetworkProvider {
                         let model = try JSONDecoder().decode(T.self, from: data)
                         seal.fulfill(model)
                     } catch {
-                        print(statusCode)
                         seal.reject(NetworkResponse.unableToDecode)
                     }
                 default :

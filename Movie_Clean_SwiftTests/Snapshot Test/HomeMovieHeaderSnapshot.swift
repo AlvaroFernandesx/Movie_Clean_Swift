@@ -1,8 +1,8 @@
 //
-//  SnapshotTests.swift
+//  HomeMovieHeaderSnapshot.swift
 //  Movie_Clean_SwiftTests
 //
-//  Created by Álvaro Fernandes on 09/01/20.
+//  Created by Álvaro Fernandes on 11/01/20.
 //  Copyright © 2020 Álvaro Fernandes. All rights reserved.
 //
 
@@ -12,24 +12,25 @@ import Nimble_Snapshots
 
 @testable import Alvão_Movies
 
-class HomeMovieCellSnapshotTest: QuickSpec {
+class HomeMovieHeaderSnapshotTest: QuickSpec {
     
     override func spec() {
         
         describe("HomeMovieCell") {
             
-            var view: HomeMovieCell!
+            var view: HomeMovieHeader!
             
             beforeEach {
-                view = HomeMovieCell()
+                view = HomeMovieHeader()
                 view.translatesAutoresizingMaskIntoConstraints = false
             }
                 
-                it("should present light repository cell view") {
+                it("should present light repository header view") {
 //                    expect(view) == recordSnapshot()
                     expect(view) == snapshot()
                 }
         }
     }
 }
+
 

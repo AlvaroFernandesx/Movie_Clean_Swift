@@ -48,10 +48,10 @@ class HomeMovieModels {
             case overview
         }
         
-        
+
         init(from decoder: Decoder) throws {
             let movieContainer = try decoder.container(keyedBy: MovieCodingKeys.self)
-            
+
             id = try movieContainer.decode(Int.self, forKey: .id)
             posterPath = try movieContainer.decode(String.self, forKey: .posterPath)
             backdrop = try movieContainer.decode(String.self, forKey: .backdrop)
@@ -83,5 +83,39 @@ class HomeMovieModels {
             self.title = movie.title
             self.overview = movie.overview
         }
+    }
+}
+
+class Models {
+    struct MovieAPIResponse: Decodable {
+        
+        let movies: [Result]?
+        let page, totalResults: Int?
+        let dates: Dates?
+        let totalPages: Int?
+        
+        private enum MovieApiResponseCodingKeys: String, CodingKey {
+            case movies = "results"
+        }
+        
+    }
+
+    struct Dates: Decodable {
+        let maximum, minimum: String
+    }
+
+    struct Result: Decodable {
+        let popularity: Double
+        let voteCount: Int
+        let video: Bool
+        let posterPath: String
+        let id: Int
+        let adult: Bool
+        let backdropPath: String?
+        let originalLanguage, originalTitle: String
+        let genreIDS: [Int]
+        let title: String
+        let voteAverage: Double
+        let overview, releaseDate: String
     }
 }
