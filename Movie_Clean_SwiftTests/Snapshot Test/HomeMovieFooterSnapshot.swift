@@ -26,11 +26,12 @@ class HomeMovieFooterSnapshotTest: QuickSpec {
             }
                 
                 it("should present light repository footer view") {
-                    expect(view) == recordSnapshot()
-//                    expect(view) == snapshot()
+//                    expect(view) == recordSnapshot()
+                    expect(view) == snapshot()
                 }
         }
     }
 }
+
 
 

@@ -65,7 +65,6 @@ class HomeMovieModels {
             self.backdrop = backdrop
             self.title = title
             self.overview = overview
-            
         }
     }
     
