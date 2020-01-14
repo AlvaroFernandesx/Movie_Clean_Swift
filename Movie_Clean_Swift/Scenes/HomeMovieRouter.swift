@@ -21,7 +21,7 @@ protocol HomeMovieDataPassing {
 }
 
 class HomeMovieRouter: NSObject, HomeMovieRoutingLogic, HomeMovieDataPassing {
-    
+
     weak var viewController: HomeMovieViewController?
     var dataStore: HomeMovieDataStore?
     
@@ -36,4 +36,5 @@ class HomeMovieRouter: NSObject, HomeMovieRoutingLogic, HomeMovieDataPassing {
         alert.addAction(action)
         viewController?.present(alert, animated: true, completion: nil)
     }
+    
 }

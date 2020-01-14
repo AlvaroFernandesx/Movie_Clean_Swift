@@ -13,25 +13,28 @@
 import UIKit
 
 protocol DetailBusinessLogic {
-    func load()
+    func load() -> HomeMovieModels.Movie?
 }
 
 protocol DetailDataStore {
-  //var name: String { get set }
+    var movie: HomeMovieModels.Movie? { get set }
 }
 
 class DetailInteractor: DetailBusinessLogic, DetailDataStore {
     
     var presenter: DetailPresentationLogic?
     var worker: DetailWorker?
+    var movie: HomeMovieModels.Movie?
     
     init(worker: DetailWorker = DetailWorker()) {
-      self.worker = worker
+        self.worker = worker
     }
     
-    func load() {
-       // worker.getData().done(handleSuccess).catch(handleFailure)
+    func load() -> HomeMovieModels.Movie? {
+        return movie
     }
+    
+    
 
     
 }

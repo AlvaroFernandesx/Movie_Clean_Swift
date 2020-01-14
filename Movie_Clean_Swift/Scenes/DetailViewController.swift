@@ -20,9 +20,9 @@ class DetailViewController: DetailMovieView, DetailDisplayLogic {
     
     var interactor: DetailBusinessLogic?
     var router: (NSObjectProtocol & DetailRoutingLogic & DetailDataPassing)?
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    override func loadView() {
+        super.loadView()
         setup()
     }
     
@@ -37,6 +37,11 @@ class DetailViewController: DetailMovieView, DetailDisplayLogic {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    override func viewDidLoad() {
+        let movie = HomeMovieModels.ViewModel(movie: interactor?.load() ?? HomeMovieModels.Movie(1, "", "", "", ""))
+        configureView(viewModel: movie)
     }
 
 }

@@ -13,12 +13,13 @@ class DetailMovieView: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
+        
         navigationItem.largeTitleDisplayMode = .never
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     var guide: UILayoutGuide {
         return view.layoutMarginsGuide
@@ -43,7 +44,7 @@ class DetailMovieView: UIViewController {
         imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = .red
         
         return imageView
     }()
@@ -55,7 +56,7 @@ class DetailMovieView: UIViewController {
         imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = .blue
         
         return imageView
     }()
@@ -69,7 +70,7 @@ class DetailMovieView: UIViewController {
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        
+        label.text = "text 1"
         return label
     }()
     
@@ -83,6 +84,7 @@ class DetailMovieView: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isEditable = false
         textView.backgroundColor = .clear
+        textView.text = "text 2"
         
         return textView
     }()
@@ -121,15 +123,16 @@ class DetailMovieView: UIViewController {
         movieBackImageView.topAnchor.constraint(equalTo: detailView.topAnchor, constant: CGFloat(0)).isActive = true
         movieBackImageView.leadingAnchor.constraint(equalTo: detailView.leadingAnchor, constant: CGFloat(0)).isActive = true
         movieBackImageView.trailingAnchor.constraint(equalTo: detailView.trailingAnchor, constant: CGFloat(0)).isActive = true
-        movieBackImageView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: CGFloat(100)).isActive = true
+//        movieBackImageView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: CGFloat(100)).isActive = true
+        movieBackImageView.heightAnchor.constraint(equalToConstant: CGFloat(150)).isActive = true
     }
     
     func movieImageConstraint() {
         view.addSubview(movieImageView)
-        movieImageView.topAnchor.constraint(equalTo: detailView.topAnchor, constant: .movieImageViewTop).isActive = true
-        movieImageView.leadingAnchor.constraint(equalTo: detailView.leadingAnchor, constant: .movieImageViewLeading).isActive = true
-        movieImageView.trailingAnchor.constraint(equalTo: detailView.trailingAnchor, constant: .movieImageViewTrailing).isActive = true
-        movieImageView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: .movieImageViewBottom).isActive = true
+        movieImageView.topAnchor.constraint(equalTo: detailView.topAnchor, constant: CGFloat(100) ).isActive = true
+        movieImageView.leadingAnchor.constraint(equalTo: detailView.leadingAnchor, constant: CGFloat(100)).isActive = true
+        movieImageView.trailingAnchor.constraint(equalTo: detailView.trailingAnchor, constant: CGFloat(-100)).isActive = true
+        movieImageView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor, constant: CGFloat(-100)).isActive = true
     }
     
     func movieTitleLabelConstrait() {

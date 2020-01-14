@@ -15,6 +15,7 @@ import UIKit
 protocol HomeMovieDisplayLogic: class {
     func reloadTableView()
     func showError(_ title: String, _ message: String)
+    func pushDetail(_ movies: HomeMovieModels.Movie)
 }
 
 class HomeMovieViewController: UITableViewController {
@@ -90,6 +91,11 @@ class HomeMovieViewController: UITableViewController {
 
 extension HomeMovieViewController {
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor?.selectItem(indexPath)
+        self.showDetailViewController(DetailViewController(), sender: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return interactor?.numberOfRows ?? 0
     }
@@ -108,6 +114,10 @@ extension HomeMovieViewController {
 }
 
 extension HomeMovieViewController: HomeMovieDisplayLogic {
+    func pushDetail(_ movies: HomeMovieModels.Movie) {
+//        router?.pushDetail(movies)
+    }
+    
     
     func reloadTableView() {
         tableView.reloadData()
