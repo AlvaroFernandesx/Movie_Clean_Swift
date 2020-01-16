@@ -24,6 +24,12 @@
 		D356514823B9861E009E928D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D356514623B9861E009E928D /* LaunchScreen.storyboard */; };
 		D356515323B9861E009E928D /* Movie_Clean_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356515223B9861E009E928D /* Movie_Clean_SwiftTests.swift */; };
 		D356515E23B9861E009E928D /* Movie_Clean_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356515D23B9861E009E928D /* Movie_Clean_SwiftUITests.swift */; };
+		D364267F23CFD46000A17391 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364267923CFD46000A17391 /* DashboardPresenter.swift */; };
+		D364268023CFD46000A17391 /* DashboardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364267A23CFD46000A17391 /* DashboardWorker.swift */; };
+		D364268123CFD46000A17391 /* DashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364267B23CFD46000A17391 /* DashboardRouter.swift */; };
+		D364268223CFD46000A17391 /* DashboardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364267C23CFD46000A17391 /* DashboardModels.swift */; };
+		D364268323CFD46000A17391 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364267D23CFD46000A17391 /* DashboardViewController.swift */; };
+		D364268423CFD46000A17391 /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364267E23CFD46000A17391 /* DashboardInteractor.swift */; };
 		D3653AA723C3EDDF004A81BD /* HomeNewMovieProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3653AA623C3EDDF004A81BD /* HomeNewMovieProvider.swift */; };
 		D37388CA23CA876D00477C8B /* HomeMovieHeaderSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37388C923CA876D00477C8B /* HomeMovieHeaderSnapshot.swift */; };
 		D37388CC23CA883A00477C8B /* HomeMovieFooterSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37388CB23CA883A00477C8B /* HomeMovieFooterSnapshot.swift */; };
@@ -89,6 +95,12 @@
 		D356515923B9861E009E928D /* Movie_Clean_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Movie_Clean_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D356515D23B9861E009E928D /* Movie_Clean_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_Clean_SwiftUITests.swift; sourceTree = "<group>"; };
 		D356515F23B9861E009E928D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D364267923CFD46000A17391 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
+		D364267A23CFD46000A17391 /* DashboardWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardWorker.swift; sourceTree = "<group>"; };
+		D364267B23CFD46000A17391 /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
+		D364267C23CFD46000A17391 /* DashboardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModels.swift; sourceTree = "<group>"; };
+		D364267D23CFD46000A17391 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		D364267E23CFD46000A17391 /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
 		D3653AA623C3EDDF004A81BD /* HomeNewMovieProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewMovieProvider.swift; sourceTree = "<group>"; };
 		D37388C923CA876D00477C8B /* HomeMovieHeaderSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMovieHeaderSnapshot.swift; sourceTree = "<group>"; };
 		D37388CB23CA883A00477C8B /* HomeMovieFooterSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMovieFooterSnapshot.swift; sourceTree = "<group>"; };
@@ -284,6 +296,7 @@
 		D356516E23B987A6009E928D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D364267823CFD42400A17391 /* DashMovie */,
 				D30CF1A223BAE78C009AF596 /* Provider */,
 				D37388CF23CC05AC00477C8B /* Home */,
 				D37388D023CC05B600477C8B /* Detail */,
@@ -300,6 +313,19 @@
 				D37388DD23CC062400477C8B /* DetailMovieView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D364267823CFD42400A17391 /* DashMovie */ = {
+			isa = PBXGroup;
+			children = (
+				D364267923CFD46000A17391 /* DashboardPresenter.swift */,
+				D364267A23CFD46000A17391 /* DashboardWorker.swift */,
+				D364267B23CFD46000A17391 /* DashboardRouter.swift */,
+				D364267C23CFD46000A17391 /* DashboardModels.swift */,
+				D364267D23CFD46000A17391 /* DashboardViewController.swift */,
+				D364267E23CFD46000A17391 /* DashboardInteractor.swift */,
+			);
+			path = DashMovie;
 			sourceTree = "<group>";
 		};
 		D37388CF23CC05AC00477C8B /* Home */ = {
@@ -590,22 +616,28 @@
 				D37388DA23CC05E300477C8B /* DetailModels.swift in Sources */,
 				D30CF19B23BAC39A009AF596 /* Colors+Font.swift in Sources */,
 				D30CF19823BAC16C009AF596 /* HomeMovieCell.swift in Sources */,
+				D364268423CFD46000A17391 /* DashboardInteractor.swift in Sources */,
 				D391DA1323BE8E4F000A6A2B /* HomeMovieHeader.swift in Sources */,
+				D364268023CFD46000A17391 /* DashboardWorker.swift in Sources */,
+				D364268123CFD46000A17391 /* DashboardRouter.swift in Sources */,
 				D37388DE23CC062400477C8B /* DetailMovieView.swift in Sources */,
 				D37388D923CC05E300477C8B /* DetailRouter.swift in Sources */,
 				D356513C23B9861D009E928D /* AppDelegate.swift in Sources */,
 				D3653AA723C3EDDF004A81BD /* HomeNewMovieProvider.swift in Sources */,
 				D3DE71FE23B99771002EEA81 /* HomeMoviePresenter.swift in Sources */,
+				D364267F23CFD46000A17391 /* DashboardPresenter.swift in Sources */,
 				D30CF19F23BAE222009AF596 /* NetworkProvider.swift in Sources */,
 				D37388DB23CC05E300477C8B /* DetailViewController.swift in Sources */,
 				D391DA1523BED175000A6A2B /* HomeMovieFooter.swift in Sources */,
 				D30CF19D23BAD799009AF596 /* RequestProvider.swift in Sources */,
 				D37388D723CC05E300477C8B /* DetailPresenter.swift in Sources */,
 				D30F28CC23B9AFE6009EAEF5 /* HomeMovieWorker.swift in Sources */,
+				D364268323CFD46000A17391 /* DashboardViewController.swift in Sources */,
 				D3DE720123B99771002EEA81 /* HomeMovieViewController.swift in Sources */,
 				D30CF1A423BAE7A0009AF596 /* HomePopularMovieProvider.swift in Sources */,
 				D37388D823CC05E300477C8B /* DetailWorker.swift in Sources */,
 				D37388DC23CC05E300477C8B /* DetailInteractor.swift in Sources */,
+				D364268223CFD46000A17391 /* DashboardModels.swift in Sources */,
 				D3DE71FF23B99771002EEA81 /* HomeMovieRouter.swift in Sources */,
 				D356513E23B9861D009E928D /* SceneDelegate.swift in Sources */,
 				D3DE720023B99771002EEA81 /* HomeMovieModels.swift in Sources */,

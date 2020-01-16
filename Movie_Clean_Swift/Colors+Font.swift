@@ -57,3 +57,22 @@ extension CGFloat {
     
     static let footerViewSpacing = CGFloat(70)
 }
+
+internal extension String {
+
+    func localized(withComment comment: String = "") -> String {
+        return NSLocalizedString(self, bundle: Bundle.module, comment: comment)
+    }
+
+}
+
+internal extension Bundle {
+
+    private static let bundleID = "com.callidus.Visual"
+
+    static var module: Bundle {
+        return Bundle(identifier: bundleID) ?? .main
+    }
+
+}
+
