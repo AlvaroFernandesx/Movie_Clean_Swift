@@ -15,7 +15,6 @@ import UIKit
 protocol HomeMoviePresentationLogic {
     func reloadTableView()
     func showError()
-    func pushDetail(_ movie: HomeMovieModels.Movie)
 }
 
 class HomeMoviePresenter: HomeMoviePresentationLogic {
@@ -30,10 +29,6 @@ class HomeMoviePresenter: HomeMoviePresentationLogic {
         let title = "Desculpe pelo erro =("
         let message = "Tivemos um problema em carregar sua página, clique novamente em 'Eu quero mais!' para carregarmos a próxima"
         viewController?.showError(title, message)
-    }
-    
-    func pushDetail(_ movie: HomeMovieModels.Movie) {
-        viewController?.pushDetail(movie)
     }
   
 }

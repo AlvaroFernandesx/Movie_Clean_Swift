@@ -19,7 +19,6 @@ protocol HomeMovieBusinessLogic {
     func filterMovies(_ name: String)
     func changeForPopular()
     func changeForNew()
-    func selectItem(_ index: IndexPath)
     
     var numberOfRows: Int { get }
 }
@@ -57,10 +56,6 @@ class HomeMovieInteractor: HomeMovieBusinessLogic, HomeMovieDataStore {
         guard index >= 0 && index < numberOfRows else { return nil }
         let movie = movies[index]
         return HomeMovieModels.ViewModel(movie: movie)
-    }
-    
-    func selectItem(_ index: IndexPath) {
-        presenter?.pushDetail(movies[index.row])
     }
     
     func load(_ provider: RequestProvider) {
